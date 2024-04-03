@@ -6,25 +6,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
-import bcrypt from 'bcrypt';
 
-export async function registerUser(formData) {
-  const { email, password } = Object.fromEntries(formData.entries());
-
-  try {
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    await sql`
-      INSERT INTO users (email, password)
-      VALUES (${email}, ${hashedPassword})
-    `;
-
-    return { message: 'User successfully registered.' };
-  } catch (error) {
-    console.error('Failed to register user:', error);
-    return { message: 'Failed to register user.' };
-  }
-}
 
 
 
