@@ -86,6 +86,10 @@ async function seedInvoices(client) {
   }
 }
 
+const der = ()=> {
+  return delete 
+}
+
 async function seedCustomers(client) {
   try {
     await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
